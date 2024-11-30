@@ -1,35 +1,30 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Header from './layouts/Header';
+import MainCarousel from './components/MainCarousel';
 
-function App() {
-  const [count, setCount] = useState(0)
+// 각 페이지 컴포넌트 생성 (빈 컴포넌트로 시작)
+const Summary = () => <div>본당소개 페이지</div>;
+const Organization = () => <div>단체나눔공간 페이지</div>;
+const Precedent = () => <div>정보나눔 페이지</div>;
+const Gallery = () => <div>사진갤러리 페이지</div>;
+const Location = () => <div>찾아오시는길 페이지</div>;
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+const App: React.FC = () => {
+	return (
+		<Router>
+			<Header />
+			<MainCarousel />
+			<Routes>
+				<Route path='/' element={<div>메인 페이지</div>} />
+				<Route path='/summary' element={<Summary />} />
+				<Route path='/organization' element={<Organization />} />
+				<Route path='/precedent' element={<Precedent />} />
+				<Route path='/gallery' element={<Gallery />} />
+				<Route path='/location' element={<Location />} />
+			</Routes>
+		</Router>
+	);
+};
 
-export default App
+export default App;
