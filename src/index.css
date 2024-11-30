@@ -25,6 +25,14 @@ body {
 	color: #333; /* 기본 글자 색상 설정 */
 }
 
+.container {
+	max-width: 600px; /* 최대 너비 설정 */
+	margin: 0 auto; /* 수평 가운데 정렬 */
+	padding: 20px; /* 내부 여백 */
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 선택 사항: 그림자 효과 */
+	background-color: #fff; /* 배경색 설정 */
+}
+
 /* Header 스타일 */
 .MuiAppBar-root {
 	z-index: 1300; /* AppBar의 z-index 설정 */
