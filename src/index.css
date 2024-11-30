@@ -1,9 +1,66 @@
-/* src/index.css */
-body {
-	margin: 0;
-	font-family: Arial, sans-serif;
-	background-color: #f0f0f0; /* 밝은 배경색 */
-	color: #333; /* 텍스트 색상 */
+/* src/index.css 또는 src/App.css */
+
+/* CSS Reset */
+* {
+	margin: 0; /* 모든 요소의 기본 여백 제거 */
+	padding: 0; /* 모든 요소의 기본 패딩 제거 */
+	box-sizing: border-box; /* 요소의 너비와 높이에 패딩과 보더를 포함 */
 }
 
-/* 추가적인 스타일을 여기에 작성 */
+/* 기본 스타일 설정 */
+body {
+	font-family: Arial, sans-serif; /* 기본 폰트 설정 */
+	background-color: #f4f4f4; /* 배경색 설정 */
+	color: #333; /* 기본 글자 색상 설정 */
+}
+
+/* Header 스타일 */
+.MuiAppBar-root {
+	z-index: 1300; /* AppBar의 z-index 설정 */
+}
+
+/* Drawer 스타일 */
+.drawer-container {
+	width: 250px; /* Drawer 너비 설정 */
+	background-color: white; /* Drawer 배경색 흰색 */
+	height: 100%;
+	padding: 20px;
+}
+
+/* Slider 스타일 */
+.slick-arrow {
+	display: none; /* 기본 슬라이더 아이콘 숨기기 */
+}
+
+/* Carousel 스타일 */
+.carousel-container {
+	margin: 20px auto; /* 상하 여백은 20px, 중앙 정렬 */
+	width: 100%; /* 너비를 100%로 설정 */
+	max-width: 1200px; /* 최대 너비 설정 */
+	padding: 0; /* 패딩 제거 */
+	position: relative; /* z-index 사용을 위한 relative 설정 */
+	z-index: 1; /* Drawer 아래에 위치 */
+}
+
+.carousel-image {
+	width: 100%; /* 이미지 너비 100% */
+	height: auto; /* 높이는 자동으로 설정 */
+	display: block; /* 블록 요소로 설정 */
+	object-fit: cover; /* 비율 유지하며 잘리도록 설정 */
+}
+
+/* React Slick의 화살표 아이콘 숨기기 */
+.slick-prev,
+.slick-next {
+	display: none !important; /* 강제로 숨김 */
+}
+
+/* Drawer의 z-index 조정 */
+.MuiDrawer-root {
+	z-index: 1300 !important; /* Drawer가 항상 위에 오도록 설정 */
+}
+
+/* CarouselContainer의 z-index 조정 */
+.carousel-container {
+	z-index: 1; /* Drawer 아래로 설정 */
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './layouts/Header';
-import MainCarousel from './components/MainCarousel';
+import MainPage from './pages/MainPage'; // MainPage import 추가
 
 // 각 페이지 컴포넌트 생성 (빈 컴포넌트로 시작)
 const Summary = () => <div>본당소개 페이지</div>;
@@ -14,9 +14,8 @@ const App: React.FC = () => {
 	return (
 		<Router>
 			<Header />
-			<MainCarousel />
 			<Routes>
-				<Route path='/' element={<div>메인 페이지</div>} />
+				<Route path='/' element={<MainPage />} /> {/* MainPage 렌더링 */}
 				<Route path='/summary' element={<Summary />} />
 				<Route path='/organization' element={<Organization />} />
 				<Route path='/precedent' element={<Precedent />} />
