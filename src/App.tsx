@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 // import Header from './layouts/Header';
 import MainPage from './pages/MainPage'; // MainPage import 추가
 import Layout from './layouts/Layout';
+import LocationPage from './pages/LocationPage';
 
 // 각 페이지 컴포넌트 생성 (빈 컴포넌트로 시작)
 const GroupsSub1 = () => <div>연합회</div>;
@@ -12,7 +13,7 @@ const GroupsSub4 = () => <div>레지오</div>;
 // const Organization = () => <div>단체나눔공간 페이지</div>;
 // const Precedent = () => <div>정보나눔 페이지</div>;
 const Gallery = () => <div>사진갤러리 페이지</div>;
-const Location = () => <div>찾아오시는길 페이지</div>;
+// const Location = () => <div>찾아오시는길 페이지</div>;
 
 const App: React.FC = () => {
 	return (
@@ -28,7 +29,7 @@ const App: React.FC = () => {
 					{/* <Route path='/organization' element={<Organization />} /> */}
 					{/* <Route path='/precedent' element={<Precedent />} /> */}
 					<Route path='/gallery' element={<Gallery />} />
-					<Route path='/location' element={<Location />} />
+					<Route path='/location' element={<LocationPage />} />
 				</Route>
 			</Routes>
 		</Router>
