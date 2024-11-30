@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AppBar, Toolbar, IconButton, Drawer } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../assets/images/main/ap1logo.jpg';
 import { FaBars, FaTimes } from 'react-icons/fa';
@@ -9,6 +9,7 @@ const StyledToolbar = styled(Toolbar)`
 	display: flex;
 	justify-content: space-between;
 	background-color: white; /* GNB 배경색 흰색 */
+	height: 60px;
 `;
 
 const LogoContainer = styled.div`
@@ -53,7 +54,21 @@ const MenuArea = styled.div`
 	padding: 10px; /* 패딩 추가 */
 `;
 
-const MenuItem = styled(Link)`
+// const MenuItem = styled(Link)`
+// 	color: white; /* 메뉴 버튼 글자 색상 흰색 */
+// 	width: 100%; /* 전체 너비 */
+// 	text-align: left; /* 왼쪽 정렬 */
+// 	margin: 5px 0; /* 위아래 여백 추가 */
+// 	padding: 10px; /* 패딩 추가 */
+// 	font-family: '가톨릭체', Arial, sans-serif; /* 폰트 적용 */
+// 	text-decoration: none; /* 기본 링크 스타일 제거 */
+
+// 	&:hover {
+// 		background-color: #555; /* Hover 시 배경색 변경 */
+// 	}
+// `;
+
+const MenuItem = styled.div<{ isOpen: boolean }>`
 	color: white; /* 메뉴 버튼 글자 색상 흰색 */
 	width: 100%; /* 전체 너비 */
 	text-align: left; /* 왼쪽 정렬 */
@@ -61,9 +76,32 @@ const MenuItem = styled(Link)`
 	padding: 10px; /* 패딩 추가 */
 	font-family: '가톨릭체', Arial, sans-serif; /* 폰트 적용 */
 	text-decoration: none; /* 기본 링크 스타일 제거 */
+	cursor: pointer;
 
 	&:hover {
-		background-color: #555; /* Hover 시 배경색 변경 */
+		/* background-color: #555; Hover 시 배경색 변경 */
+	}
+`;
+
+const SubMenu = styled.div<{ isOpen: boolean }>`
+	background-color: rgb(85, 85, 85); /* 소메뉴 배경색 */
+	padding: 0; /* 패딩 제거 */
+	width: 100%;
+	transform: ${({ isOpen }) => (isOpen ? 'scaleY(1)' : 'scaleY(0)')}; /* 펼쳐지는 효과 */
+	transform-origin: top; /* 위쪽에서부터 확장 */
+	transition: max-height 0.3s ease, transform 0.3s ease; /* 애니메이션 효과 */
+	max-height: ${({ isOpen }) => (isOpen ? '200px' : '0')}; /* 필요에 따라 높이 조정 */
+	overflow: hidden; /* 내용이 넘칠 경우 숨기기 */
+`;
+
+const SubMenuItem = styled(Link)`
+	color: white; /* 소메뉴 버튼 글자 색상 흰색 */
+	display: block; /* 블록 형태로 표시 */
+	padding: 10px 20px; /* 패딩 추가 */
+	text-decoration: none; /* 기본 링크 스타일 제거 */
+
+	&:hover {
+		background-color: rgba(255, 255, 255, 0.1); /* Hover 시 배경색 변경 */
 	}
 `;
 
@@ -82,10 +120,24 @@ const CloseButton = styled(IconButton)`
 `;
 
 const Header: React.FC = () => {
+	const navigate = useNavigate();
+
 	const [drawerOpen, setDrawerOpen] = useState(false); // Drawer 상태 관리
+
+	const [openSubMenu, setOpenSubMenu] = useState<string | null>(null); // 소메뉴 상태 관리
+
+	useEffect(() => {
+		if (!drawerOpen) {
+			setOpenSubMenu(null); // 클릭한 메뉴의 소메뉴 열기/닫기
+		}
+	}, [drawerOpen]);
 
 	const toggleDrawer = (open: boolean) => () => {
 		setDrawerOpen(open);
+	};
+
+	const handleMenuClick = (menu: string) => {
+		setOpenSubMenu(prev => (prev === menu ? null : menu)); // 클릭한 메뉴의 소메뉴 열기/닫기
 	};
 
 	return (
@@ -95,26 +147,92 @@ const Header: React.FC = () => {
 					<FaBars />
 				</MenuButton>
 				<LogoContainer>
-					<Logo src={logo} alt='압구정1동 청년부 로고' />
+					<Logo src={logo} alt='압구정1동 청년부 로고' onClick={() => navigate('/')} />
 				</LogoContainer>
 				<Drawer anchor='left' open={drawerOpen} onClose={toggleDrawer(false)}>
 					<DrawerContainer>
 						<LogoArea>
-							<Logo src={logo} alt='압구정1동 청년부 로고' />
+							<Logo
+								src={logo}
+								alt='압구정1동 청년부 로고'
+								//  onClick={() => navigate('/')}
+							/>
 							<CloseButton onClick={toggleDrawer(false)}>
 								<FaTimes />
 							</CloseButton>
 						</LogoArea>
 						<MenuArea>
-							<MenuItem to='/summary'>본당소개</MenuItem>
+							<MenuItem isOpen={openSubMenu === 'groups'} onClick={() => handleMenuClick('groups')}>
+								단체소개
+							</MenuItem>
+							{openSubMenu === 'groups' && (
+								<SubMenu isOpen={openSubMenu === 'groups'}>
+									<SubMenuItem
+										to='/groups/sub1'
+										onClick={() => {
+											setDrawerOpen(false);
+										}}
+									>
+										연합회
+									</SubMenuItem>
+									<Divider />
+									<SubMenuItem
+										to='/groups/sub2'
+										onClick={() => {
+											setDrawerOpen(false);
+										}}
+									>
+										전례단
+									</SubMenuItem>
+									<Divider />
+									<SubMenuItem
+										to='/groups/sub3'
+										onClick={() => {
+											setDrawerOpen(false);
+										}}
+									>
+										성가대
+									</SubMenuItem>
+									<Divider />
+									<SubMenuItem
+										to='/groups/sub4'
+										onClick={() => {
+											setDrawerOpen(false);
+										}}
+									>
+										레지오
+									</SubMenuItem>
+								</SubMenu>
+							)}
 							<Divider />
-							<MenuItem to='/organization'>단체나눔공간</MenuItem>
+							{/* <MenuItem to='/organization'>단체나눔공간</MenuItem>
 							<Divider />
 							<MenuItem to='/precedent'>정보나눔</MenuItem>
+							<Divider /> */}
+							<MenuItem isOpen={openSubMenu === 'gallery'} onClick={() => handleMenuClick('gallery')}>
+								사진갤러리
+							</MenuItem>
+							{openSubMenu === 'gallery' && (
+								<SubMenu isOpen={openSubMenu === 'gallery'}>
+									<SubMenuItem to='/gallery/sub1'>소메뉴 1</SubMenuItem>
+									<Divider />
+									<SubMenuItem to='/gallery/sub2'>소메뉴 2</SubMenuItem>
+								</SubMenu>
+							)}
 							<Divider />
-							<MenuItem to='/gallery'>사진갤러리</MenuItem>
-							<Divider />
-							<MenuItem to='/location'>찾아오시는길</MenuItem>
+							<MenuItem
+								isOpen={false}
+								//isOpen={openSubMenu === 'location'}
+								onClick={() =>
+									//  handleMenuClick('location')
+									{
+										setDrawerOpen(false);
+										navigate('/location');
+									}
+								}
+							>
+								찾아오시는길
+							</MenuItem>
 							<Divider />
 						</MenuArea>
 					</DrawerContainer>
