@@ -91,9 +91,14 @@ const SubMenu = styled.div<{ isOpen: boolean }>`
 	background-color: rgb(85, 85, 85); /* 소메뉴 배경색 */
 	padding: 0; /* 패딩 제거 */
 	width: 100%;
-	transform: ${({ isOpen }) => (isOpen ? 'scaleY(1)' : 'scaleY(0)')}; /* 펼쳐지는 효과 */
-	transform-origin: top; /* 위쪽에서부터 확장 */
-	transition: max-height 0.3s ease, transform 0.3s ease; /* 애니메이션 효과 */
+	//transform: ${({ isOpen }) => (isOpen ? 'scaleY(1)' : 'scaleY(0)')}; /* 펼쳐지는 효과 */
+	//transform-origin: top; /* 위쪽에서부터 확장 */
+	//max-height: ${({ isOpen }) => (isOpen ? '200px' : '0')}; /* 필요에 따라 높이 조정 */
+
+	//transition: max-height 0.3s ease, transform 0.3s ease; /* 애니메이션 효과 */
+	//overflow: hidden; /* 내용이 넘칠 경우 숨기기 */
+	opacity: ${({ isOpen }) => (isOpen ? 1 : 0)}; /* 슬라이드 효과를 위한 투명도 조정 */
+
 	max-height: ${({ isOpen }) => (isOpen ? '200px' : '0')}; /* 필요에 따라 높이 조정 */
 	overflow: hidden; /* 내용이 넘칠 경우 숨기기 */
 `;

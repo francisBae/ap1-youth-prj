@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import styled from 'styled-components';
+// import TopButton from './TopButton';
 
 const Container = styled.div`
 	max-width: 600px;
@@ -19,7 +20,7 @@ const Layout: React.FC = () => {
 			<Outlet /> {/* 중첩된 라우트를 여기에 렌더링 */}
 			{/* </main> */}
 			<Footer />
-			{/* </div> */}
+			{/* <TopButton /> */}
 		</Container>
 	);
 };
