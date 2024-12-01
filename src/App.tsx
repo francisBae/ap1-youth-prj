@@ -6,6 +6,7 @@ import LocationPage from './pages/LocationPage';
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import WelcomePage from './pages/WelcomePage';
 
 // 각 페이지 컴포넌트 생성 (빈 컴포넌트로 시작)
 const GroupsSub1 = () => <div>연합회</div>;
@@ -28,6 +29,7 @@ const App: React.FC = () => {
 		<Router>
 			{/* <Header /> */}
 			<Routes>
+				<Route path='/welcome' element={<WelcomePage />} />
 				<Route path='/' element={<Layout />}>
 					<Route index element={<MainPage />} /> {/* MainPage 렌더링 */}
 					<Route path='/groups/sub1' element={<GroupsSub1 />} />

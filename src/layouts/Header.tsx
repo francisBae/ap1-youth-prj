@@ -243,6 +243,20 @@ const Header: React.FC = () => {
 								찾아오시는길
 							</MenuItem>
 							<Divider />
+							<MenuItem
+								isOpen={false}
+								//isOpen={openSubMenu === 'location'}
+								onClick={() =>
+									//  handleMenuClick('location')
+									{
+										setDrawerOpen(false);
+										navigate('/welcome');
+									}
+								}
+							>
+								Welcome페이지 테스트
+							</MenuItem>
+							<Divider />
 						</MenuArea>
 					</DrawerContainer>
 				</Drawer>
