@@ -33,7 +33,7 @@ const CopyrightInfo = styled.p`
 
 const Footer: React.FC = () => {
 	return (
-		<FooterContainer>
+		<FooterContainer data-aos='fade-up' data-aos-duration='800' data-aos-easing='ease-out'>
 			<Title>천주교 서울대교구 압구정1동성당 청년부</Title>
 			<Address>서울시 강남구 압구정로 167길 27(신사동) 우06023</Address>
 			<ContactInfo>TEL: 02-541-9241 | FAX: 02-541-9243</ContactInfo>

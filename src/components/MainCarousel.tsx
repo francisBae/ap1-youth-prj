@@ -39,7 +39,9 @@ const MainCarousel: React.FC = () => {
 	};
 
 	return (
-		<CarouselContainer>
+		<CarouselContainer
+		//  data-aos='fade-up' data-aos-duration='800' data-aos-easing='ease-out'
+		>
 			<Slider {...settings}>
 				<div>
 					<CarouselImage src={main001} alt='Slide 1' />

@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-// import Header from './layouts/Header';
 import MainPage from './pages/MainPage'; // MainPage import 추가
 import Layout from './layouts/Layout';
 import LocationPage from './pages/LocationPage';
+
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 // 각 페이지 컴포넌트 생성 (빈 컴포넌트로 시작)
 const GroupsSub1 = () => <div>연합회</div>;
@@ -16,6 +18,12 @@ const Gallery = () => <div>사진갤러리 페이지</div>;
 // const Location = () => <div>찾아오시는길 페이지</div>;
 
 const App: React.FC = () => {
+	useEffect(() => {
+		AOS.init({
+			duration: 1000 // 애니메이션 지속 시간
+		});
+	}, []);
+
 	return (
 		<Router>
 			{/* <Header /> */}

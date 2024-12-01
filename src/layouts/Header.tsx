@@ -24,6 +24,10 @@ const Logo = styled.img`
 	height: 40px; /* 로고 크기 조정 */
 `;
 
+const DrawerLogo = styled.img`
+	height: 50px; /* 로고 크기 조정 */
+`;
+
 const MenuButton = styled(IconButton)`
 	position: absolute;
 	left: 20px;
@@ -152,7 +156,7 @@ const Header: React.FC = () => {
 				<Drawer anchor='left' open={drawerOpen} onClose={toggleDrawer(false)}>
 					<DrawerContainer>
 						<LogoArea>
-							<Logo
+							<DrawerLogo
 								src={logo}
 								alt='압구정1동 청년부 로고'
 								//  onClick={() => navigate('/')}
