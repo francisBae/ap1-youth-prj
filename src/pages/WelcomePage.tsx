@@ -135,8 +135,6 @@ const InvitationContainer = styled.div`
 
 	text-align: center;
 	//background-color: #f9f9f9; /* 배경색 */
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
 
 	//transform: translateZ(0) rotateX(0); /* 위로 90도 회전하여 숨김 */
 `;
@@ -265,7 +263,8 @@ const WelcomePage: React.FC = () => {
 
 		const page = document.getElementById('page'); // DOM 요소 선택
 		if (!page) return;
-		page.style.transform = !isopen ? 'rotateX(180deg)' : 'rotateX(0)';
+		//TODO : 아이폰 이슈면 그냥 반대로 먹여보기
+		page.style.transform = !isopen ? 'rotateX(-180deg)' : 'rotateX(0)';
 
 		setIsopen(!isopen); // 클릭 시 상태 변경
 	};
