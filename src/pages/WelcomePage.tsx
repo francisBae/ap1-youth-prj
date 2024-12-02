@@ -59,10 +59,15 @@ const Page = styled.div<{ isopen: string }>`
 	height: 100%;
 	transition: transform 1.1s ease; /* 회전 시 애니메이션 효과 */
 	transform-style: preserve-3d;
+
+	-ms-transform-origin: top; /* 회전 중심을 위쪽으로 설정 */
+	-webkit-transform-origin: top; /* 회전 중심을 위쪽으로 설정 */
+	-moz-transform-origin: top; /* 회전 중심을 위쪽으로 설정 */
+	-o-transform-origin: top; /* 회전 중심을 위쪽으로 설정 */
 	transform-origin: top; /* 회전 중심을 위쪽으로 설정 */
 	/* border-top: ${({ isopen }) => (isopen ? '1px solid black' : '0px')}; */
 	backface-visibility: hidden;
-
+	will-change: transform; /* 성능 최적화 */
 	/* 클릭 시 회전 효과 */
 	-ms-transform: ${({ isopen }) => (isopen === 'true' ? 'rotateX(180deg)' : 'rotateX(0)')}; /* -90도 회전하여 위로 열리는 효과 */
 	-webkit-transform: ${({ isopen }) => (isopen === 'true' ? 'rotateX(180deg)' : 'rotateX(0)')}; /* -90도 회전하여 위로 열리는 효과 */
