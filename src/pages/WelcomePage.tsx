@@ -82,7 +82,7 @@ const Page = styled.div<{ isopen: string }>`
 	-ms-transform: ${({ isopen }) =>
 		isopen === 'true' ? 'translateZ(0) rotateX(180deg)' : 'translateZ(0) rotateX(0)'}; /* -90도 회전하여 위로 열리는 효과 */
 	-webkit-transform: ${({ isopen }) =>
-		isopen === 'true' ? 'translateZ(0) rotateX(-180deg)' : 'translateZ(0) rotateX(0)'}; /* -90도 회전하여 위로 열리는 효과 */
+		isopen === 'true' ? 'translateZ(0) rotateX(180deg)' : 'translateZ(0) rotateX(0)'}; /* -90도 회전하여 위로 열리는 효과 */
 	-moz-transform: ${({ isopen }) =>
 		isopen === 'true' ? 'translateZ(0) rotateX(180deg)' : 'translateZ(0) rotateX(0)'}; /* -90도 회전하여 위로 열리는 효과 */
 	-o-transform: ${({ isopen }) =>
@@ -211,7 +211,7 @@ const BackContainer = styled.div`
 	align-items: center;
 	background-color: #fffaf4; //뒷면 배경색
 	-moz-transform: translateZ(0) rotateX(180deg); /* 위로 90도 회전하여 숨김 */
-	-webkit-transform: translateZ(0) rotateX(-180deg); /* 위로 90도 회전하여 숨김 */
+	-webkit-transform: translateZ(0) rotateX(180deg); /* 위로 90도 회전하여 숨김 */
 	-ms-transform: translateZ(0) rotateX(180deg); /* 위로 90도 회전하여 숨김 */
 	-o-transform: translateZ(0) rotateX(180deg); /* 위로 90도 회전하여 숨김 */
 	transform: translateZ(0) rotateX(180deg); /* 위로 90도 회전하여 숨김 */
@@ -257,12 +257,15 @@ const WelcomePage: React.FC = () => {
 	// const navigate = useNavigate();
 
 	const isAnimating = useRef(false);
+	const isOpenRef = useRef(false);
 
 	const handleClick = () => {
 		// if (isopen) return;
 
 		if (isAnimating.current) return;
 		isAnimating.current = true;
+
+		isOpenRef.current = !isOpenRef.current;
 
 		setIsopen(!isopen); // 클릭 시 상태 변경
 	};
@@ -273,8 +276,8 @@ const WelcomePage: React.FC = () => {
 
 	return (
 		<Container>
-			<Invitation isopen={isopen.toString()} onClick={handleClick}>
-				<Page isopen={isopen.toString()}>
+			<Invitation isopen={isOpenRef.current.toString()} onClick={handleClick}>
+				<Page isopen={isOpenRef.current.toString()}>
 					<FacePageFront />
 					<FacePageBack />
 				</Page>
