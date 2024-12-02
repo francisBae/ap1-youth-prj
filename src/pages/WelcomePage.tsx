@@ -25,6 +25,7 @@ const Invitation = styled.div<{ isopen: string }>`
 
 	//box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 	perspective: 1000px;
+	-webkit-perspective: 1000px;
 	-webkit-transform-style: preserve-3d;
 	transform-style: preserve-3d;
 	animation: show-invitation 1s; /* 처음에 회전하면서 날아오는 효과 */
@@ -264,7 +265,7 @@ const WelcomePage: React.FC = () => {
 		const page = document.getElementById('page'); // DOM 요소 선택
 		if (!page) return;
 		//TODO : 아이폰 이슈면 그냥 반대로 먹여보기
-		page.style.transform = !isopen ? 'rotateX(-180deg)' : 'rotateX(0)';
+		page.style.transform = !isopen ? 'rotateX(180deg)' : 'rotateX(0)';
 
 		setIsopen(!isopen); // 클릭 시 상태 변경
 	};
