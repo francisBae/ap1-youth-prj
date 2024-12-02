@@ -47,13 +47,11 @@ const MainCarousel: React.FC = () => {
 	};
 
 	return (
-		<CarouselContainer
-		//  data-aos='fade-up' data-aos-duration='800' data-aos-easing='ease-out'
-		>
+		<CarouselContainer data-aos='fade-up' data-aos-duration='800' data-aos-easing='ease-out'>
 			<Slider {...settings}>
 				{images.map((img, idx) => (
 					<div>
-						<CarouselImage key={idx} src={img} alt='Slide 1' />
+						<CarouselImage key={idx} src={img} alt={`Slide ${idx}`} loading='eager' />
 					</div>
 				))}
 				{/* <div>
