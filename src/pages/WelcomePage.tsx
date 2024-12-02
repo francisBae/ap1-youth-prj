@@ -254,6 +254,12 @@ const WelcomePage: React.FC = () => {
 	const isAnimating = useRef(false);
 	const isOpenRef = useRef(false);
 
+	useEffect(() => {
+		const page = document.getElementById('page'); // DOM 요소 선택
+		if (!page) return;
+		page.style.transform = 'rotateX(0)';
+	}, []);
+
 	const handleClick = () => {
 		// if (isopen) return;
 
