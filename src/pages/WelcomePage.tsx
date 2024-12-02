@@ -13,6 +13,7 @@ const Container = styled.div`
 	margin: 0 auto; /* 중앙 정렬을 위한 여백 */
 	perspective: 1000px; /* 3D 효과를 위한 perspective 설정 */
 	background-color: #eaeaea; /* 앞면 배경색 */
+	transform: translate3d(0, 0, 0);
 `;
 
 const Invitation = styled.div<{ isopen: string }>`
@@ -52,7 +53,7 @@ const Invitation = styled.div<{ isopen: string }>`
 	transform: ${({ isopen }) =>
 		isopen === 'true' ? 'scale(1.2) translateY(120px)' : 'scale(1) translateY(0)'}; /* 열릴 때 크기 조정 및 아래로 이동 */
 
-	-webkit-transition: transform 0.5s ease;
+	-webkit-transition: -webkit-transform 0.5s ease;
 	transition: transform 0.5s ease; /* 위치 이동 및 크기 변화 시 애니메이션 효과 */
 `;
 
@@ -62,7 +63,7 @@ const Page = styled.div<{ isopen: string }>`
 	left: 0;
 	width: 100%;
 	height: 100%;
-	-webkit-transition: transform 1.1s ease; /* 회전 시 애니메이션 효과 */
+	-webkit-transition: -webkit-transform 1.1s ease; /* 회전 시 애니메이션 효과 */
 	transition: transform 1.1s ease; /* 회전 시 애니메이션 효과 */
 	-webkit-transform-style: preserve-3d;
 	transform-style: preserve-3d;
@@ -81,7 +82,7 @@ const Page = styled.div<{ isopen: string }>`
 	-ms-transform: ${({ isopen }) =>
 		isopen === 'true' ? 'translateZ(0) rotateX(180deg)' : 'translateZ(0) rotateX(0)'}; /* -90도 회전하여 위로 열리는 효과 */
 	-webkit-transform: ${({ isopen }) =>
-		isopen === 'true' ? 'translateZ(0) rotateX(180deg)' : 'translateZ(0) rotateX(0)'}; /* -90도 회전하여 위로 열리는 효과 */
+		isopen === 'true' ? 'translateZ(0) rotateX(-180deg)' : 'translateZ(0) rotateX(0)'}; /* -90도 회전하여 위로 열리는 효과 */
 	-moz-transform: ${({ isopen }) =>
 		isopen === 'true' ? 'translateZ(0) rotateX(180deg)' : 'translateZ(0) rotateX(0)'}; /* -90도 회전하여 위로 열리는 효과 */
 	-o-transform: ${({ isopen }) =>
@@ -194,6 +195,7 @@ const FrontContainer = styled.div`
 	justify-content: center;
 	align-items: center;
 	background-color: white; /* 앞면 배경색 */
+	transform: translate3d(0, 0, 0);
 `;
 
 const BackContainer = styled.div`
