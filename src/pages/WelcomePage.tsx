@@ -24,14 +24,17 @@ const Invitation = styled.div<{ isopen: string }>`
 
 	//box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 	perspective: 1000px;
+	-webkit-transform-style: preserve-3d;
 	transform-style: preserve-3d;
 	animation: show-invitation 1s; /* 처음에 회전하면서 날아오는 효과 */
 
 	@keyframes show-invitation {
 		0% {
+			-webkit-transform: translate(-100%, -100%) rotate(480deg);
 			transform: translate(-100%, -100%) rotate(480deg);
 		}
 		100% {
+			-webkit-transform: translate(0, 0) rotate(0);
 			transform: translate(0, 0) rotate(0);
 		}
 	}
@@ -48,6 +51,8 @@ const Invitation = styled.div<{ isopen: string }>`
 
 	transform: ${({ isopen }) =>
 		isopen === 'true' ? 'scale(1.2) translateY(120px)' : 'scale(1) translateY(0)'}; /* 열릴 때 크기 조정 및 아래로 이동 */
+
+	-webkit-transition: transform 0.5s ease;
 	transition: transform 0.5s ease; /* 위치 이동 및 크기 변화 시 애니메이션 효과 */
 `;
 
@@ -57,7 +62,9 @@ const Page = styled.div<{ isopen: string }>`
 	left: 0;
 	width: 100%;
 	height: 100%;
+	-webkit-transition: transform 1.1s ease; /* 회전 시 애니메이션 효과 */
 	transition: transform 1.1s ease; /* 회전 시 애니메이션 효과 */
+	-webkit-transform-style: preserve-3d;
 	transform-style: preserve-3d;
 
 	-ms-transform-origin: top; /* 회전 중심을 위쪽으로 설정 */
@@ -66,7 +73,9 @@ const Page = styled.div<{ isopen: string }>`
 	-o-transform-origin: top; /* 회전 중심을 위쪽으로 설정 */
 	transform-origin: top; /* 회전 중심을 위쪽으로 설정 */
 	/* border-top: ${({ isopen }) => (isopen ? '1px solid black' : '0px')}; */
+	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
+	-webkit-will-change: transform; /* 성능 최적화 */
 	will-change: transform; /* 성능 최적화 */
 	/* 클릭 시 회전 효과 */
 	-ms-transform: ${({ isopen }) =>
@@ -178,6 +187,7 @@ const FrontContainer = styled.div`
 	left: 0;
 	width: 100%;
 	height: 100%;
+	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
 	display: flex;
 	flex-direction: column;
@@ -192,15 +202,16 @@ const BackContainer = styled.div`
 	left: 0;
 	width: 100%;
 	height: 100%;
+	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	background-color: #fffaf4; //뒷면 배경색
-	-moz-transform: rotateX(180deg); /* 위로 90도 회전하여 숨김 */
-	-webkit-transform: rotateX(180deg); /* 위로 90도 회전하여 숨김 */
-	-ms-transform: rotateX(180deg); /* 위로 90도 회전하여 숨김 */
-	-o-transform: rotateX(180deg); /* 위로 90도 회전하여 숨김 */
+	-moz-transform: translateZ(0) rotateX(180deg); /* 위로 90도 회전하여 숨김 */
+	-webkit-transform: translateZ(0) rotateX(180deg); /* 위로 90도 회전하여 숨김 */
+	-ms-transform: translateZ(0) rotateX(180deg); /* 위로 90도 회전하여 숨김 */
+	-o-transform: translateZ(0) rotateX(180deg); /* 위로 90도 회전하여 숨김 */
 	transform: translateZ(0) rotateX(180deg); /* 위로 90도 회전하여 숨김 */
 `;
 
@@ -235,7 +246,7 @@ const StyledButton = styled.button<{ isopen: string }>`
 	cursor: pointer; /* 커서 모양 변경 */
 	font-size: 11px;
 	transition: background-color ease 0.3s ease; /* 배경색 변화 애니메이션 */
-
+	-webkit-transition: background-color ease 0.3s ease; /* 배경색 변화 애니메이션 */
 	opacity: ${({ isopen }) => (isopen === 'true' ? 1 : 0)}; /* -90도 회전하여 위로 열리는 효과 */
 `;
 
