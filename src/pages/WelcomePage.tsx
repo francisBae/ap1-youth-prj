@@ -54,7 +54,7 @@ const Page = styled.div<{ isopen: string }>`
 	/* border-top: ${({ isopen }) => (isopen ? '1px solid black' : '0px')}; */
 
 	/* 클릭 시 회전 효과 */
-	transform: ${({ isopen }) => (isopen === 'true' ? 'rotateX(180deg)' : 'rotateX(0)')}; /* -90도 회전하여 위로 열리는 효과 */
+	transform: ${({ isopen }) => (isopen === 'true' ? 'rotateX(-180deg)' : 'rotateX(0)')}; /* -90도 회전하여 위로 열리는 효과 */
 `;
 
 // 카드 컴포넌트
@@ -212,18 +212,18 @@ const StyledButton = styled.button<{ isopen: string }>`
 `;
 
 const WelcomePage: React.FC = () => {
-	const [isopen, setisopen] = useState(false);
+	const [isopen, setIsopen] = useState(false);
 	// const navigate = useNavigate();
 
 	const isAnimating = useRef(false);
 
 	const handleClick = () => {
-		if (isopen) return;
+		// if (isopen) return;
 
 		if (isAnimating.current) return;
 		isAnimating.current = true;
 
-		setisopen(!isopen); // 클릭 시 상태 변경
+		setIsopen(!isopen); // 클릭 시 상태 변경
 	};
 
 	useEffect(() => {
