@@ -276,7 +276,6 @@ const WelcomePage: React.FC = () => {
 
 	return (
 		<Container>
-			{isOpenRef.current.toString().toUpperCase()}
 			<Invitation isopen={isOpenRef.current.toString()} onClick={handleClick}>
 				<Page isopen={isOpenRef.current.toString()}>
 					<FacePageFront />
