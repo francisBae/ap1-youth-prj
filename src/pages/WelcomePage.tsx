@@ -15,7 +15,7 @@ const Container = styled.div`
 	background-color: #eaeaea; /* 앞면 배경색 */
 `;
 
-const Invitation = styled.div<{ isOpen: boolean }>`
+const Invitation = styled.div<{ isopen: string }>`
 	position: relative;
 	width: 220px; /* 초대장 너비 */
 	height: 240px; /* 초대장 높이 */
@@ -37,11 +37,12 @@ const Invitation = styled.div<{ isOpen: boolean }>`
 	}
 
 	/* 클릭 시 아래에서 위로 열리는 효과 및 크기 조정 */
-	transform: ${({ isOpen }) => (isOpen ? 'scale(1.3) translateY(120px)' : 'scale(1) translateY(0)')}; /* 열릴 때 크기 조정 및 아래로 이동 */
+	transform: ${({ isopen }) =>
+		isopen === 'true' ? 'scale(1.2) translateY(120px)' : 'scale(1) translateY(0)'}; /* 열릴 때 크기 조정 및 아래로 이동 */
 	transition: transform 0.5s ease; /* 위치 이동 및 크기 변화 시 애니메이션 효과 */
 `;
 
-const Page = styled.div<{ isOpen: boolean }>`
+const Page = styled.div<{ isopen: string }>`
 	position: absolute;
 	top: 0; /* 상단에 위치 */
 	left: 0;
@@ -50,10 +51,10 @@ const Page = styled.div<{ isOpen: boolean }>`
 	transition: transform 1.1s ease; /* 회전 시 애니메이션 효과 */
 	transform-style: preserve-3d;
 	transform-origin: top; /* 회전 중심을 위쪽으로 설정 */
-	/* border-top: ${({ isOpen }) => (isOpen ? '1px solid black' : '0px')}; */
+	/* border-top: ${({ isopen }) => (isopen ? '1px solid black' : '0px')}; */
 
 	/* 클릭 시 회전 효과 */
-	transform: ${({ isOpen }) => (isOpen ? 'rotateX(180deg)' : 'rotateX(0)')}; /* -90도 회전하여 위로 열리는 효과 */
+	transform: ${({ isopen }) => (isopen === 'true' ? 'rotateX(180deg)' : 'rotateX(0)')}; /* -90도 회전하여 위로 열리는 효과 */
 `;
 
 // 카드 컴포넌트
@@ -71,7 +72,7 @@ const FacePageBack: React.FC = () => (
 	</BackContainer>
 );
 
-const InvitationContent = ({ isOpen }: { isOpen: boolean }) => {
+const InvitationContent = ({ isopen }: { isopen: boolean }) => {
 	const navigate = useNavigate();
 
 	return (
@@ -87,7 +88,7 @@ const InvitationContent = ({ isOpen }: { isOpen: boolean }) => {
 			<DateTime>일시: 2024.12.29 6시 청년미사 후</DateTime>
 			<Location>장소: 압구정1동 성당 2층 파티마홀</Location>
 			<StyledButton
-				isOpen={isOpen}
+				isopen={isopen.toString()}
 				onClick={() => {
 					navigate('/main');
 				}}
@@ -196,7 +197,7 @@ const StyledHr = styled.hr`
 // 	background-color: #fffaf4; //뒷면 배경색
 // `;
 
-const StyledButton = styled.button<{ isOpen: boolean }>`
+const StyledButton = styled.button<{ isopen: string }>`
 	margin-top: 10px;
 	background-color: #d3a775; /* 배경색 */
 	color: white; /* 글자색 */
@@ -207,37 +208,39 @@ const StyledButton = styled.button<{ isOpen: boolean }>`
 	font-size: 11px;
 	transition: background-color ease 0.3s ease; /* 배경색 변화 애니메이션 */
 
-	opacity: ${({ isOpen }) => (isOpen ? 1 : 0)}; /* -90도 회전하여 위로 열리는 효과 */
+	opacity: ${({ isopen }) => (isopen === 'true' ? 1 : 0)}; /* -90도 회전하여 위로 열리는 효과 */
 `;
 
 const WelcomePage: React.FC = () => {
-	const [isOpen, setIsOpen] = useState(false);
+	const [isopen, setisopen] = useState(false);
 	// const navigate = useNavigate();
 
 	const isAnimating = useRef(false);
 
 	const handleClick = () => {
+		if (isopen) return;
+
 		if (isAnimating.current) return;
 		isAnimating.current = true;
 
-		setIsOpen(!isOpen); // 클릭 시 상태 변경
+		setisopen(!isopen); // 클릭 시 상태 변경
 	};
 
 	useEffect(() => {
 		isAnimating.current = false;
-	}, [isOpen]);
+	}, [isopen]);
 
 	return (
 		<Container>
-			<Invitation isOpen={isOpen} onClick={handleClick}>
-				<Page isOpen={isOpen}>
+			<Invitation isopen={isopen.toString()} onClick={handleClick}>
+				<Page isopen={isopen.toString()}>
 					<FacePageFront />
 					<FacePageBack />
 				</Page>
 				<StyledHr />
-				{isOpen && <InvitationContent isOpen />} {/* 펼쳐졌을 때 보여지는 내용 */}
+				{isopen && <InvitationContent isopen />} {/* 펼쳐졌을 때 보여지는 내용 */}
 				{/* 당신을 초대합니다 */}
-				{/* {isOpen && ( */}
+				{/* {isopen && ( */}
 				{/* )} */}
 			</Invitation>
 		</Container>

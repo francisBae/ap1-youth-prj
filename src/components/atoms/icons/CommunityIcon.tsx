@@ -12,7 +12,7 @@ export const CommunityIcon = ({ color = 'currentColor' }: IconProps) => {
 			id='Layer_1'
 			xmlns='http://www.w3.org/2000/svg'
 			viewBox='0 0 256 240'
-			enable-background='new 0 0 256 240'
+			enableBackground='new 0 0 256 240'
 		>
 			<path
 				d='M127.826,39.584c10.308,0,18.7-8.392,18.7-18.7s-8.392-18.7-18.7-18.7s-18.7,8.392-18.7,18.7S117.518,39.584,127.826,39.584

@@ -78,7 +78,7 @@ const MenuItem = styled.div<{ isOpen: boolean }>`
 	text-align: left; /* 왼쪽 정렬 */
 	margin: 5px 0; /* 위아래 여백 추가 */
 	padding: 10px; /* 패딩 추가 */
-	font-family: '가톨릭체', Arial, sans-serif; /* 폰트 적용 */
+	font-family: '나눔고딕', Arial, sans-serif; /* 폰트 적용 */
 	text-decoration: none; /* 기본 링크 스타일 제거 */
 	cursor: pointer;
 
@@ -250,7 +250,7 @@ const Header: React.FC = () => {
 									//  handleMenuClick('location')
 									{
 										setDrawerOpen(false);
-										navigate('/welcome');
+										navigate('/');
 									}
 								}
 							>
