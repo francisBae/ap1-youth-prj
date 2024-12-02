@@ -69,11 +69,16 @@ const Page = styled.div<{ isopen: string }>`
 	backface-visibility: hidden;
 	will-change: transform; /* 성능 최적화 */
 	/* 클릭 시 회전 효과 */
-	-ms-transform: ${({ isopen }) => (isopen === 'true' ? 'rotateX(180deg)' : 'rotateX(0)')}; /* -90도 회전하여 위로 열리는 효과 */
-	-webkit-transform: ${({ isopen }) => (isopen === 'true' ? 'rotateX(180deg)' : 'rotateX(0)')}; /* -90도 회전하여 위로 열리는 효과 */
-	-moz-transform: ${({ isopen }) => (isopen === 'true' ? 'rotateX(180deg)' : 'rotateX(0)')}; /* -90도 회전하여 위로 열리는 효과 */
-	-o-transform: ${({ isopen }) => (isopen === 'true' ? 'rotateX(180deg)' : 'rotateX(0)')}; /* -90도 회전하여 위로 열리는 효과 */
-	transform: ${({ isopen }) => (isopen === 'true' ? 'rotateX(180deg)' : 'rotateX(0)')}; /* -90도 회전하여 위로 열리는 효과 */
+	-ms-transform: ${({ isopen }) =>
+		isopen === 'true' ? 'translateZ(0) rotateX(180deg)' : 'translateZ(0) rotateX(0)'}; /* -90도 회전하여 위로 열리는 효과 */
+	-webkit-transform: ${({ isopen }) =>
+		isopen === 'true' ? 'translateZ(0) rotateX(180deg)' : 'translateZ(0) rotateX(0)'}; /* -90도 회전하여 위로 열리는 효과 */
+	-moz-transform: ${({ isopen }) =>
+		isopen === 'true' ? 'translateZ(0) rotateX(180deg)' : 'translateZ(0) rotateX(0)'}; /* -90도 회전하여 위로 열리는 효과 */
+	-o-transform: ${({ isopen }) =>
+		isopen === 'true' ? 'translateZ(0) rotateX(180deg)' : 'translateZ(0) rotateX(0)'}; /* -90도 회전하여 위로 열리는 효과 */
+	transform: ${({ isopen }) =>
+		isopen === 'true' ? 'translateZ(0) rotateX(180deg)' : 'translateZ(0) rotateX(0)'}; /* -90도 회전하여 위로 열리는 효과 */
 `;
 
 // 카드 컴포넌트
@@ -196,7 +201,7 @@ const BackContainer = styled.div`
 	-webkit-transform: rotateX(180deg); /* 위로 90도 회전하여 숨김 */
 	-ms-transform: rotateX(180deg); /* 위로 90도 회전하여 숨김 */
 	-o-transform: rotateX(180deg); /* 위로 90도 회전하여 숨김 */
-	transform: rotateX(180deg); /* 위로 90도 회전하여 숨김 */
+	transform: translateZ(0) rotateX(180deg); /* 위로 90도 회전하여 숨김 */
 `;
 
 const StyledHr = styled.hr`
