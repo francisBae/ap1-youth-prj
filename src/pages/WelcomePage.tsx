@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import invitationImg from '../assets/images/welcome/invitation.jpg';
@@ -17,8 +17,8 @@ const Container = styled.div`
 
 const Invitation = styled.div<{ isOpen: boolean }>`
 	position: relative;
-	width: 200px; /* 초대장 너비 */
-	height: 220px; /* 초대장 높이 */
+	width: 220px; /* 초대장 너비 */
+	height: 240px; /* 초대장 높이 */
 	/* border: 1px solid black; */
 	background-color: #fffaf4; //뒷면 배경색
 
@@ -37,7 +37,7 @@ const Invitation = styled.div<{ isOpen: boolean }>`
 	}
 
 	/* 클릭 시 아래에서 위로 열리는 효과 및 크기 조정 */
-	transform: ${({ isOpen }) => (isOpen ? 'scale(1.2) translateY(100px)' : 'scale(1) translateY(0)')}; /* 열릴 때 크기 조정 및 아래로 이동 */
+	transform: ${({ isOpen }) => (isOpen ? 'scale(1.3) translateY(120px)' : 'scale(1) translateY(0)')}; /* 열릴 때 크기 조정 및 아래로 이동 */
 	transition: transform 0.5s ease; /* 위치 이동 및 크기 변화 시 애니메이션 효과 */
 `;
 
@@ -71,23 +71,36 @@ const FacePageBack: React.FC = () => (
 	</BackContainer>
 );
 
-const InvitationContent: React.FC = () => (
-	// <ContentContainer>
-	<InvitationContainer>
-		<Title>2024 홈커밍데이</Title>
-		<Subtitle>초대장</Subtitle>
-		<Content>
-			2024년 홈커밍데이에 초대합니다.
-			<br />한 해를 마무리하는 지금, 함께 모여 소중한 추억을 나눠요.
-		</Content>
-		<DateTime>일시: 2024.12.29 6시 청년미사 후</DateTime>
-		<Location>장소: 압구정1동 성당 2층 파티마홀</Location>
-	</InvitationContainer>
-);
+const InvitationContent = ({ isOpen }: { isOpen: boolean }) => {
+	const navigate = useNavigate();
+
+	return (
+		// <ContentContainer>
+
+		<InvitationContainer>
+			<Title>2024 홈커밍데이</Title>
+			<Subtitle>초대장</Subtitle>
+			<Content>
+				2024년 홈커밍데이에 초대합니다.
+				<br />한 해를 마무리하는 지금, 함께 모여 소중한 추억을 나눠요.
+			</Content>
+			<DateTime>일시: 2024.12.29 6시 청년미사 후</DateTime>
+			<Location>장소: 압구정1동 성당 2층 파티마홀</Location>
+			<StyledButton
+				isOpen={isOpen}
+				onClick={() => {
+					navigate('/main');
+				}}
+			>
+				함께하기
+			</StyledButton>
+		</InvitationContainer>
+	);
+};
 
 const InvitationContainer = styled.div`
-	width: 200px;
-	height: 220px;
+	width: 220px;
+	height: 240px;
 	margin-top: 22px;
 	//border: 2px solid #4a90e2; /* 테두리 색상 */
 	/* border-radius: 10px; 모서리 둥글게 */
@@ -184,13 +197,14 @@ const StyledHr = styled.hr`
 // `;
 
 const StyledButton = styled.button<{ isOpen: boolean }>`
-	background-color: #5c6570; /* 배경색 */
+	margin-top: 10px;
+	background-color: #d3a775; /* 배경색 */
 	color: white; /* 글자색 */
 	border: none; /* 테두리 제거 */
 	/* border-radius: 5px; 모서리 둥글게 */
-	padding: 5px 10px; /* 안쪽 여백 */
+	padding: 4px 8px; /* 안쪽 여백 */
 	cursor: pointer; /* 커서 모양 변경 */
-	font-size: 12px;
+	font-size: 11px;
 	transition: background-color ease 0.3s ease; /* 배경색 변화 애니메이션 */
 
 	opacity: ${({ isOpen }) => (isOpen ? 1 : 0)}; /* -90도 회전하여 위로 열리는 효과 */
@@ -198,11 +212,20 @@ const StyledButton = styled.button<{ isOpen: boolean }>`
 
 const WelcomePage: React.FC = () => {
 	const [isOpen, setIsOpen] = useState(false);
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
+
+	const isAnimating = useRef(false);
 
 	const handleClick = () => {
+		if (isAnimating.current) return;
+		isAnimating.current = true;
+
 		setIsOpen(!isOpen); // 클릭 시 상태 변경
 	};
+
+	useEffect(() => {
+		isAnimating.current = false;
+	}, [isOpen]);
 
 	return (
 		<Container>
@@ -212,17 +235,9 @@ const WelcomePage: React.FC = () => {
 					<FacePageBack />
 				</Page>
 				<StyledHr />
-				{isOpen && <InvitationContent />} {/* 펼쳐졌을 때 보여지는 내용 */}
+				{isOpen && <InvitationContent isOpen />} {/* 펼쳐졌을 때 보여지는 내용 */}
 				{/* 당신을 초대합니다 */}
 				{/* {isOpen && ( */}
-				<StyledButton
-					isOpen={isOpen}
-					onClick={() => {
-						navigate('/main');
-					}}
-				>
-					메인으로 가기
-				</StyledButton>
 				{/* )} */}
 			</Invitation>
 		</Container>
