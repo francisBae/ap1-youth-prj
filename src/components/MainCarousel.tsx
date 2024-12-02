@@ -12,11 +12,11 @@ import 'slick-carousel/slick/slick-theme.css';
 // import main005 from '../assets/images/main/main005.jpg';
 
 const images = [
-	'https://res.cloudinary.com/dtwnsrsz5/image/upload/v1733134060/ap1youth/images/main/dcrzatamo2i5vub2ojbc.jpg',
-	'https://res.cloudinary.com/dtwnsrsz5/image/upload/v1733134060/ap1youth/images/main/kibwdfn0qltmjeftammk.jpg',
-	'https://res.cloudinary.com/dtwnsrsz5/image/upload/v1733134060/ap1youth/images/main/e6uqxzdhjq4wglfuwc6k.jpg',
-	'https://res.cloudinary.com/dtwnsrsz5/image/upload/v1733134060/ap1youth/images/main/uuuu1yuforc0ovdptt2u.jpg',
-	'https://res.cloudinary.com/dtwnsrsz5/image/upload/v1733134061/ap1youth/images/main/mkpgqujzew7yv5e7aryy.jpg'
+	'https://res.cloudinary.com/dtwnsrsz5/image/upload/w_600/v1733134060/ap1youth/images/main/dcrzatamo2i5vub2ojbc.jpg',
+	'https://res.cloudinary.com/dtwnsrsz5/image/upload/w_600/v1733134060/ap1youth/images/main/kibwdfn0qltmjeftammk.jpg',
+	'https://res.cloudinary.com/dtwnsrsz5/image/upload/w_600/v1733134060/ap1youth/images/main/e6uqxzdhjq4wglfuwc6k.jpg',
+	'https://res.cloudinary.com/dtwnsrsz5/image/upload/w_600/v1733134060/ap1youth/images/main/uuuu1yuforc0ovdptt2u.jpg',
+	'https://res.cloudinary.com/dtwnsrsz5/image/upload/w_600/v1733134061/ap1youth/images/main/mkpgqujzew7yv5e7aryy.jpg'
 ];
 
 const CarouselContainer = styled.div`
