@@ -5,11 +5,19 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 // 이미지 import
-import main001 from '../assets/images/main/main001.jpg';
-import main002 from '../assets/images/main/main002.jpg';
-import main003 from '../assets/images/main/main003.jpg';
-import main004 from '../assets/images/main/main004.jpg';
-import main005 from '../assets/images/main/main005.jpg';
+// import main001 from '../assets/images/main/main001.jpg';
+// import main002 from '../assets/images/main/main002.jpg';
+// import main003 from '../assets/images/main/main003.jpg';
+// import main004 from '../assets/images/main/main004.jpg';
+// import main005 from '../assets/images/main/main005.jpg';
+
+const images = [
+	'https://res.cloudinary.com/dtwnsrsz5/image/upload/v1733134060/ap1youth/images/main/dcrzatamo2i5vub2ojbc.jpg',
+	'https://res.cloudinary.com/dtwnsrsz5/image/upload/v1733134060/ap1youth/images/main/kibwdfn0qltmjeftammk.jpg',
+	'https://res.cloudinary.com/dtwnsrsz5/image/upload/v1733134060/ap1youth/images/main/e6uqxzdhjq4wglfuwc6k.jpg',
+	'https://res.cloudinary.com/dtwnsrsz5/image/upload/v1733134060/ap1youth/images/main/uuuu1yuforc0ovdptt2u.jpg',
+	'https://res.cloudinary.com/dtwnsrsz5/image/upload/v1733134061/ap1youth/images/main/mkpgqujzew7yv5e7aryy.jpg'
+];
 
 const CarouselContainer = styled.div`
 	margin: 20px auto;
@@ -43,7 +51,12 @@ const MainCarousel: React.FC = () => {
 		//  data-aos='fade-up' data-aos-duration='800' data-aos-easing='ease-out'
 		>
 			<Slider {...settings}>
-				<div>
+				{images.map((img, idx) => (
+					<div>
+						<CarouselImage key={idx} src={img} alt='Slide 1' />
+					</div>
+				))}
+				{/* <div>
 					<CarouselImage src={main001} alt='Slide 1' />
 				</div>
 				<div>
@@ -57,7 +70,7 @@ const MainCarousel: React.FC = () => {
 				</div>
 				<div>
 					<CarouselImage src={main005} alt='Slide 5' />
-				</div>
+				</div> */}
 			</Slider>
 		</CarouselContainer>
 	);
