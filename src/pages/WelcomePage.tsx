@@ -61,6 +61,7 @@ const Page = styled.div<{ isopen: string }>`
 	transform-style: preserve-3d;
 	transform-origin: top; /* 회전 중심을 위쪽으로 설정 */
 	/* border-top: ${({ isopen }) => (isopen ? '1px solid black' : '0px')}; */
+	backface-visibility: hidden;
 
 	/* 클릭 시 회전 효과 */
 	-ms-transform: ${({ isopen }) => (isopen === 'true' ? 'rotateX(180deg)' : 'rotateX(0)')}; /* -90도 회전하여 위로 열리는 효과 */
@@ -255,7 +256,7 @@ const WelcomePage: React.FC = () => {
 					<FacePageBack />
 				</Page>
 				<StyledHr />
-				{isopen && <InvitationContent isopen />} {/* 펼쳐졌을 때 보여지는 내용 */}
+				<InvitationContent isopen /> {/* 펼쳐졌을 때 보여지는 내용 */}
 				{/* 당신을 초대합니다 */}
 				{/* {isopen && ( */}
 				{/* )} */}
