@@ -29,9 +29,9 @@ const App: React.FC = () => {
 		<Router>
 			{/* <Header /> */}
 			<Routes>
-				<Route path='/welcome' element={<WelcomePage />} />
+				<Route path='/' element={<WelcomePage />} />
 				<Route path='/' element={<Layout />}>
-					<Route index element={<MainPage />} /> {/* MainPage 렌더링 */}
+					<Route path='/main' element={<MainPage />} /> {/* MainPage 렌더링 */}
 					<Route path='/groups/sub1' element={<GroupsSub1 />} />
 					<Route path='/groups/sub2' element={<GroupsSub2 />} />
 					<Route path='/groups/sub3' element={<GroupsSub3 />} />

@@ -11,8 +11,8 @@
 
 @font-face {
 	font-family: '가톨릭체'; /* 폰트 이름 설정 */
-	/* src: url('./assets/fonts/catholic.ttf') format('truetype'); */
-	src: url('./assets/fonts/catholic.woff') format('woff');
+	src: url('./assets/fonts/catholic.ttf') format('truetype');
+	/* src: url('./assets/fonts/catholic.woff') format('woff'); */
 }
 
 /* 기본 스타일 설정 */
