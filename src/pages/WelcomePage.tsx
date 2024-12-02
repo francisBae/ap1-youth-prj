@@ -74,8 +74,8 @@ const Page = styled.div<{ isopen: string }>`
 	-o-transform-origin: top; /* 회전 중심을 위쪽으로 설정 */
 	transform-origin: top; /* 회전 중심을 위쪽으로 설정 */
 	/* border-top: ${({ isopen }) => (isopen ? '1px solid black' : '0px')}; */
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
+	/* -webkit-backface-visibility: hidden;
+	backface-visibility: hidden; */
 	-webkit-will-change: transform; /* 성능 최적화 */
 	will-change: transform; /* 성능 최적화 */
 	/* 클릭 시 회전 효과 */
@@ -188,14 +188,14 @@ const FrontContainer = styled.div`
 	left: 0;
 	width: 100%;
 	height: 100%;
-	-webkit-backface-visibility: hidden;
-	backface-visibility: hidden;
+	/* -webkit-backface-visibility: hidden;
+	backface-visibility: hidden; */
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	background-color: white; /* 앞면 배경색 */
-	transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0) rotateX(0);
 `;
 
 const BackContainer = styled.div`
@@ -204,6 +204,8 @@ const BackContainer = styled.div`
 	left: 0;
 	width: 100%;
 	height: 100%;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
 	display: flex;

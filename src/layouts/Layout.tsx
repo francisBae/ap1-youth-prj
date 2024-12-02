@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
@@ -12,6 +12,10 @@ const Container = styled.div`
 	background-color: #fff;
 `;
 const Layout: React.FC = () => {
+	useEffect(() => {
+		window.scrollTo({ top: 0 });
+	});
+
 	return (
 		<Container>
 			{/* <div> */}
