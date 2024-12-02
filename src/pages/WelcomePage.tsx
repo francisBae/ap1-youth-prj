@@ -135,6 +135,10 @@ const InvitationContainer = styled.div`
 
 	text-align: center;
 	//background-color: #f9f9f9; /* 배경색 */
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+	//transform: translateZ(0) rotateX(0); /* 위로 90도 회전하여 숨김 */
 `;
 
 const Title = styled.h1`
