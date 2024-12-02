@@ -42,16 +42,16 @@ const Invitation = styled.div<{ isopen: string }>`
 
 	/* 클릭 시 아래에서 위로 열리는 효과 및 크기 조정 */
 	-ms-transform: ${({ isopen }) =>
-		isopen === 'true' ? 'scale(1.2) translateY(120px)' : 'scale(1) translateY(0)'}; /* 열릴 때 크기 조정 및 아래로 이동 */
+		isopen === 'true' ? 'scale(1.2) translateY(120px) rotate(0)' : 'scale(1) translateY(0) rotate(0)'}; /* 열릴 때 크기 조정 및 아래로 이동 */
 	-webkit-transform: ${({ isopen }) =>
-		isopen === 'true' ? 'scale(1.2) translateY(120px)' : 'scale(1) translateY(0)'}; /* 열릴 때 크기 조정 및 아래로 이동 */
+		isopen === 'true' ? 'scale(1.2) translateY(120px) rotate(0)' : 'scale(1) translateY(0) rotate(0)'}; /* 열릴 때 크기 조정 및 아래로 이동 */
 	-moz-transform: ${({ isopen }) =>
-		isopen === 'true' ? 'scale(1.2) translateY(120px)' : 'scale(1) translateY(0)'}; /* 열릴 때 크기 조정 및 아래로 이동 */
+		isopen === 'true' ? 'scale(1.2) translateY(120px) rotate(0)' : 'scale(1) translateY(0) rotate(0)'}; /* 열릴 때 크기 조정 및 아래로 이동 */
 	-o-transform: ${({ isopen }) =>
-		isopen === 'true' ? 'scale(1.2) translateY(120px)' : 'scale(1) translateY(0)'}; /* 열릴 때 크기 조정 및 아래로 이동 */
+		isopen === 'true' ? 'scale(1.2) translateY(120px) rotate(0)' : 'scale(1) translateY(0) rotate(0)'}; /* 열릴 때 크기 조정 및 아래로 이동 */
 
 	transform: ${({ isopen }) =>
-		isopen === 'true' ? 'scale(1.2) translateY(120px)' : 'scale(1) translateY(0)'}; /* 열릴 때 크기 조정 및 아래로 이동 */
+		isopen === 'true' ? 'scale(1.2) translateY(120px) rotate(0)' : 'scale(1) translateY(0) rotate(0)'}; /* 열릴 때 크기 조정 및 아래로 이동 */
 
 	-webkit-transition: -webkit-transform 0.5s ease;
 	transition: transform 0.5s ease; /* 위치 이동 및 크기 변화 시 애니메이션 효과 */
@@ -261,7 +261,7 @@ const WelcomePage: React.FC = () => {
 
 		const page = document.getElementById('page'); // DOM 요소 선택
 		if (!page) return;
-		page.style.transform = !isopen ? 'rotateX(180deg)' : 'rotateX(0deg)';
+		page.style.transform = !isopen ? 'rotateX(180deg)' : 'rotateX(0)';
 
 		setIsopen(!isopen); // 클릭 시 상태 변경
 	};
