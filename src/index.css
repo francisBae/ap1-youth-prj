@@ -8,11 +8,6 @@
 }
 
 /* src/index.css 또는 src/App.css에 추가 */
-@font-face {
-	font-family: '나눔고딕'; /* 폰트 이름 설정 */
-	/*src: url('./assets/fonts/NanumGothic.ttf') format('truetype');*/
-	src: url('./assets/fonts/NanumGothic.woff') format('woff');
-}
 
 @font-face {
 	font-family: '가톨릭체'; /* 폰트 이름 설정 */
