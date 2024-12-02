@@ -211,7 +211,7 @@ const BackContainer = styled.div`
 	align-items: center;
 	background-color: #fffaf4; //뒷면 배경색
 	-moz-transform: translateZ(0) rotateX(180deg); /* 위로 90도 회전하여 숨김 */
-	-webkit-transform: translateZ(0) rotateX(180deg); /* 위로 90도 회전하여 숨김 */
+	-webkit-transform: translateZ(0) rotateX(-180deg); /* 위로 90도 회전하여 숨김 */
 	-ms-transform: translateZ(0) rotateX(180deg); /* 위로 90도 회전하여 숨김 */
 	-o-transform: translateZ(0) rotateX(180deg); /* 위로 90도 회전하여 숨김 */
 	transform: translateZ(0) rotateX(180deg); /* 위로 90도 회전하여 숨김 */
