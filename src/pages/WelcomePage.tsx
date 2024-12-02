@@ -37,6 +37,15 @@ const Invitation = styled.div<{ isopen: string }>`
 	}
 
 	/* 클릭 시 아래에서 위로 열리는 효과 및 크기 조정 */
+	-ms-transform: ${({ isopen }) =>
+		isopen === 'true' ? 'scale(1.2) translateY(120px)' : 'scale(1) translateY(0)'}; /* 열릴 때 크기 조정 및 아래로 이동 */
+	-webkit-transform: ${({ isopen }) =>
+		isopen === 'true' ? 'scale(1.2) translateY(120px)' : 'scale(1) translateY(0)'}; /* 열릴 때 크기 조정 및 아래로 이동 */
+	-moz-transform: ${({ isopen }) =>
+		isopen === 'true' ? 'scale(1.2) translateY(120px)' : 'scale(1) translateY(0)'}; /* 열릴 때 크기 조정 및 아래로 이동 */
+	-o-transform: ${({ isopen }) =>
+		isopen === 'true' ? 'scale(1.2) translateY(120px)' : 'scale(1) translateY(0)'}; /* 열릴 때 크기 조정 및 아래로 이동 */
+
 	transform: ${({ isopen }) =>
 		isopen === 'true' ? 'scale(1.2) translateY(120px)' : 'scale(1) translateY(0)'}; /* 열릴 때 크기 조정 및 아래로 이동 */
 	transition: transform 0.5s ease; /* 위치 이동 및 크기 변화 시 애니메이션 효과 */
@@ -54,7 +63,11 @@ const Page = styled.div<{ isopen: string }>`
 	/* border-top: ${({ isopen }) => (isopen ? '1px solid black' : '0px')}; */
 
 	/* 클릭 시 회전 효과 */
-	transform: ${({ isopen }) => (isopen === 'true' ? 'rotateX(-180deg)' : 'rotateX(0)')}; /* -90도 회전하여 위로 열리는 효과 */
+	-ms-transform: ${({ isopen }) => (isopen === 'true' ? 'rotateX(180deg)' : 'rotateX(0)')}; /* -90도 회전하여 위로 열리는 효과 */
+	-webkit-transform: ${({ isopen }) => (isopen === 'true' ? 'rotateX(180deg)' : 'rotateX(0)')}; /* -90도 회전하여 위로 열리는 효과 */
+	-moz-transform: ${({ isopen }) => (isopen === 'true' ? 'rotateX(180deg)' : 'rotateX(0)')}; /* -90도 회전하여 위로 열리는 효과 */
+	-o-transform: ${({ isopen }) => (isopen === 'true' ? 'rotateX(180deg)' : 'rotateX(0)')}; /* -90도 회전하여 위로 열리는 효과 */
+	transform: ${({ isopen }) => (isopen === 'true' ? 'rotateX(180deg)' : 'rotateX(0)')}; /* -90도 회전하여 위로 열리는 효과 */
 `;
 
 // 카드 컴포넌트
@@ -173,6 +186,10 @@ const BackContainer = styled.div`
 	justify-content: center;
 	align-items: center;
 	background-color: #fffaf4; //뒷면 배경색
+	-moz-transform: rotateX(180deg); /* 위로 90도 회전하여 숨김 */
+	-webkit-transform: rotateX(180deg); /* 위로 90도 회전하여 숨김 */
+	-ms-transform: rotateX(180deg); /* 위로 90도 회전하여 숨김 */
+	-o-transform: rotateX(180deg); /* 위로 90도 회전하여 숨김 */
 	transform: rotateX(180deg); /* 위로 90도 회전하여 숨김 */
 `;
 
