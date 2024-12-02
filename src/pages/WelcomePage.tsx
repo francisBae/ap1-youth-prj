@@ -79,16 +79,6 @@ const Page = styled.div<{ isopen: string }>`
 	-webkit-will-change: transform; /* 성능 최적화 */
 	will-change: transform; /* 성능 최적화 */
 	/* 클릭 시 회전 효과 */
-	-ms-transform: ${({ isopen }) =>
-		isopen === 'true' ? 'translateZ(0) rotateX(180deg)' : 'translateZ(0) rotateX(0)'}; /* -90도 회전하여 위로 열리는 효과 */
-	-webkit-transform: ${({ isopen }) =>
-		isopen === 'true' ? 'translateZ(0) rotateX(180deg)' : 'translateZ(0) rotateX(0)'}; /* -90도 회전하여 위로 열리는 효과 */
-	-moz-transform: ${({ isopen }) =>
-		isopen === 'true' ? 'translateZ(0) rotateX(180deg)' : 'translateZ(0) rotateX(0)'}; /* -90도 회전하여 위로 열리는 효과 */
-	-o-transform: ${({ isopen }) =>
-		isopen === 'true' ? 'translateZ(0) rotateX(180deg)' : 'translateZ(0) rotateX(0)'}; /* -90도 회전하여 위로 열리는 효과 */
-	transform: ${({ isopen }) =>
-		isopen === 'true' ? 'translateZ(0) rotateX(180deg)' : 'translateZ(0) rotateX(0)'}; /* -90도 회전하여 위로 열리는 효과 */
 `;
 
 // 카드 컴포넌트
@@ -269,6 +259,10 @@ const WelcomePage: React.FC = () => {
 
 		isOpenRef.current = !isOpenRef.current;
 
+		const page = document.getElementById('page'); // DOM 요소 선택
+		if (!page) return;
+		page.style.transform = !isopen ? 'rotateX(180deg)' : 'rotateX(0deg)';
+
 		setIsopen(!isopen); // 클릭 시 상태 변경
 	};
 
@@ -276,10 +270,14 @@ const WelcomePage: React.FC = () => {
 		isAnimating.current = false;
 	}, [isopen]);
 
+	// useEffect(() => {
+
+	// }, []); // 빈 배열로 의존성 설정
+
 	return (
 		<Container>
 			<Invitation isopen={isOpenRef.current.toString()} onClick={handleClick}>
-				<Page isopen={isOpenRef.current.toString()}>
+				<Page id='page' isopen={isOpenRef.current.toString()}>
 					<FacePageFront />
 					<FacePageBack />
 				</Page>
