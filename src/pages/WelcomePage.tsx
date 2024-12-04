@@ -271,7 +271,7 @@ const WelcomePage: React.FC = () => {
 		const page = document.getElementById('page'); // DOM 요소 선택
 		if (!page) return;
 		//TODO : 아이폰 이슈면 그냥 반대로 먹여보기
-		page.style.transform = !isopen ? 'rotateX(180deg) translateZ(1)' : 'rotateX(0)';
+		page.style.transform = !isopen ? 'rotateX(180deg)' : 'rotateX(0)';
 
 		setIsopen(!isopen); // 클릭 시 상태 변경
 	};
