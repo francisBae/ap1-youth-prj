@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import invitationImg from '../assets/images/welcome/invitation.jpg';
 
@@ -98,7 +98,7 @@ const FacePageBack: React.FC = () => (
 );
 
 const InvitationContent = ({ isopen }: { isopen: boolean }) => {
-	const navigate = useNavigate();
+	// const navigate = useNavigate();
 
 	return (
 		// <ContentContainer>
@@ -115,7 +115,8 @@ const InvitationContent = ({ isopen }: { isopen: boolean }) => {
 			<StyledButton
 				isopen={isopen.toString()}
 				onClick={() => {
-					navigate('/main');
+					// navigate('/main');
+					window.open('https://docs.google.com/forms/d/e/1FAIpQLSfIxt5hfI-nV3xe_-qDvfZjDXQ27r1nXb-bO51fFXcjCNaD7A/viewform?usp=sf_link');
 				}}
 			>
 				함께하기
