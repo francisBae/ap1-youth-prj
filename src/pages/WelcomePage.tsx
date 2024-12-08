@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 // import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import invitationImg from '../assets/images/welcome/invitation.jpg';
+// import invitationImg from '../assets/images/welcome/invitation.jpg';
 
 // 스타일 컴포넌트
 const Container = styled.div`
@@ -87,7 +87,11 @@ const FacePageFront: React.FC = () => (
 	<FrontContainer>
 		{/* <p>당신을 초대합니다.</p>
 		<p>2024년 12월 29일(일)</p> */}
-		<img src={invitationImg} />
+		{/* <img src={invitationImg} /> */}
+		<InvitationCard>
+			<InvitationTitle>Invitation</InvitationTitle>
+			<InvitationDate>2024년 12월 29일</InvitationDate>
+		</InvitationCard>
 	</FrontContainer>
 );
 
@@ -133,7 +137,8 @@ const InvitationContainer = styled.div`
 	/* border-radius: 10px; 모서리 둥글게 */
 	padding: 16px;
 	//box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
-	font-family: '나눔고딕', 'Arial', sans-serif;
+	/* font-family: '나눔고딕', 'Arial', sans-serif; */
+	font-family: 'Pretendard', Arial, sans-serif; /* 폰트 적용 */
 
 	text-align: center;
 	//background-color: #f9f9f9; /* 배경색 */
@@ -145,11 +150,14 @@ const Title = styled.h1`
 	font-size: 15px;
 	font-weight: 600;
 	color: #b62a60; /* 제목 색상 */
+	font-family: 'PretendardSemiBold', Arial, sans-serif; /* 폰트 적용 */
+
 	margin: 0;
 `;
 
 const Subtitle = styled.h2`
 	font-size: 14px;
+	font-family: 'PretendardSemiBold', Arial, sans-serif; /* 폰트 적용 */
 
 	color: #333;
 	margin: 10px 0;
@@ -166,6 +174,7 @@ const DateTime = styled.p`
 	color: #333;
 	margin: 4px 0;
 	font-weight: 600;
+	font-family: 'PretendardSemiBold', Arial, sans-serif; /* 폰트 적용 */
 `;
 
 const Location = styled.p`
@@ -173,6 +182,7 @@ const Location = styled.p`
 	color: #333;
 	margin: 4px 0;
 	font-weight: 600;
+	font-family: 'PretendardSemiBold', Arial, sans-serif; /* 폰트 적용 */
 `;
 
 // 스타일 컴포넌트 추가
@@ -192,6 +202,43 @@ const FrontContainer = styled.div`
 	transform: translate3d(0, 0, 0) rotateX(0);
 `;
 
+// const FrontContainer = styled.div`
+// 	position: absolute;
+// 	top: 0;
+// 	left: 0;
+// 	width: 100%;
+// 	height: 100%;
+// 	display: flex;
+// 	flex-direction: column;
+// 	justify-content: center;
+// 	align-items: center;
+// 	background-color: white; /* 앞면 배경색 */
+// 	transform: translate3d(0, 0, 0) rotateX(0);
+// `;
+
+const InvitationCard = styled.div`
+	width: 200px; /* 실제 내용의 너비 */
+	height: 220px; /* 실제 내용의 높이 */
+	background-color: white;
+	border: 2px solid black; /* 검은 선 테두리 굵기 증가 */
+	padding: 16px; /* 패딩 추가 */
+	box-sizing: border-box; /* 박스 모델 설정 */
+	display: flex;
+	flex-direction: column;
+	justify-content: center; /* 중앙 정렬 */
+	align-items: center;
+	font-family: '가톨릭체', sans-serif; /* 폰트 설정 */
+`;
+
+const InvitationTitle = styled.h2`
+	margin: 0;
+	margin-bottom: 50px; /* 아래쪽 여백 조정 (간격 늘리기) */
+	font-weight: bold; /* 볼드체 설정 */
+`;
+
+const InvitationDate = styled.p`
+	margin: 0;
+`;
 const BackContainer = styled.div`
 	position: absolute;
 	top: 0;
