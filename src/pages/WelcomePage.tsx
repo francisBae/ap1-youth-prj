@@ -18,8 +18,8 @@ const Container = styled.div`
 
 const Invitation = styled.div<{ isopen: string }>`
 	position: relative;
-	width: 220px; /* 초대장 너비 */
-	height: 240px; /* 초대장 높이 */
+	width: 242px; /* 초대장 너비 */
+	height: 264px; /* 초대장 높이 */
 	/* border: 1px solid black; */
 	background-color: #fffaf4; //뒷면 배경색
 
@@ -96,9 +96,15 @@ const FacePageFront: React.FC = () => (
 );
 
 const FacePageBack: React.FC = () => (
-	<BackContainer>
-		<img src='https://img.freepik.com/free-vector/vintage-christmas-tree-with-gifts_23-2148759404.jpg' alt='크리스마스 트리' width={'180px'} />
-	</BackContainer>
+	<>
+		<BackContainer>
+			<Title>2024 홈커밍데이</Title>
+			{/* <br /> */}
+
+			<img src='https://img.freepik.com/free-vector/vintage-christmas-tree-with-gifts_23-2148759404.jpg' alt='크리스마스 트리' width={'180px'} />
+			{/* <br /> */}
+		</BackContainer>
+	</>
 );
 
 const InvitationContent = ({ isopen }: { isopen: boolean }) => {
@@ -108,11 +114,14 @@ const InvitationContent = ({ isopen }: { isopen: boolean }) => {
 		// <ContentContainer>
 
 		<InvitationContainer>
-			<Title>2024 홈커밍데이</Title>
+			{/* <Title>2024 홈커밍데이</Title> */}
 			<Subtitle>초대장</Subtitle>
+
 			<Content>
 				2024년 홈커밍데이에 초대합니다.
-				<br />한 해를 마무리하는 지금, 함께 모여 소중한 추억을 나눠요.
+				<br />한 해를 마무리하는 지금,
+				<br />
+				함께 모여 소중한 추억을 나눠요.
 			</Content>
 			<DateTime>일시: 2024.12.29 6시 청년미사 후</DateTime>
 			<Location>장소: 압구정1동 성당 2층 파티마홀</Location>
@@ -130,9 +139,9 @@ const InvitationContent = ({ isopen }: { isopen: boolean }) => {
 };
 
 const InvitationContainer = styled.div`
-	width: 220px;
-	height: 240px;
-	margin-top: 22px;
+	width: 242px;
+	height: 264px;
+	margin-top: 12px;
 	//border: 2px solid #4a90e2; /* 테두리 색상 */
 	/* border-radius: 10px; 모서리 둥글게 */
 	padding: 16px;
@@ -147,30 +156,31 @@ const InvitationContainer = styled.div`
 `;
 
 const Title = styled.h1`
-	font-size: 15px;
+	font-size: 18px;
 	font-weight: 600;
 	color: #b62a60; /* 제목 색상 */
 	font-family: 'PretendardSemiBold', Arial, sans-serif; /* 폰트 적용 */
 
-	margin: 0;
+	margin: 0 0 10px 0;
+	/* margin */
 `;
 
 const Subtitle = styled.h2`
-	font-size: 14px;
+	font-size: 20px;
 	font-family: 'PretendardSemiBold', Arial, sans-serif; /* 폰트 적용 */
 
 	color: #333;
-	margin: 10px 0;
+	margin: 0;
 `;
 
 const Content = styled.p`
 	font-size: 11px;
 	color: #555;
-	margin: 10px 0;
+	margin: 12px 0 20px 0;
 `;
 
 const DateTime = styled.p`
-	font-size: 10px;
+	font-size: 12px;
 	color: #333;
 	margin: 4px 0;
 	font-weight: 600;
@@ -178,7 +188,7 @@ const DateTime = styled.p`
 `;
 
 const Location = styled.p`
-	font-size: 10px;
+	font-size: 12px;
 	color: #333;
 	margin: 4px 0;
 	font-weight: 600;
@@ -218,7 +228,7 @@ const FrontContainer = styled.div`
 
 const InvitationCard = styled.div`
 	width: 200px; /* 실제 내용의 너비 */
-	height: 220px; /* 실제 내용의 높이 */
+	height: 242px; /* 실제 내용의 높이 */
 	background-color: white;
 	border: 2px solid black; /* 검은 선 테두리 굵기 증가 */
 	padding: 16px; /* 패딩 추가 */
@@ -245,11 +255,13 @@ const BackContainer = styled.div`
 	left: 0;
 	width: 100%;
 	height: 100%;
+	/* padding: 10px; */
 	-webkit-transform-style: preserve-3d;
 	transform-style: preserve-3d;
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 	background-color: #fffaf4; //뒷면 배경색
@@ -285,11 +297,15 @@ const StyledButton = styled.button<{ isopen: string }>`
 	margin-top: 10px;
 	background-color: #d3a775; /* 배경색 */
 	color: white; /* 글자색 */
-	border: none; /* 테두리 제거 */
+	/* border: none; 테두리 제거 */
+	border-radius: 8px;
+	border-style: none;
+	/* box-shadow: 0 0 10px; */
 	/* border-radius: 5px; 모서리 둥글게 */
-	padding: 4px 8px; /* 안쪽 여백 */
+	padding: 8px 12px; /* 안쪽 여백 */
+	/* padding-bottom: ; */
 	cursor: pointer; /* 커서 모양 변경 */
-	font-size: 11px;
+	font-size: 16px;
 	transition: background-color ease 0.3s ease; /* 배경색 변화 애니메이션 */
 	-webkit-transition: background-color ease 0.3s ease; /* 배경색 변화 애니메이션 */
 	opacity: ${({ isopen }) => (isopen === 'true' ? 1 : 0)}; /* -90도 회전하여 위로 열리는 효과 */
@@ -311,6 +327,8 @@ const WelcomePage: React.FC = () => {
 	const handleClick = () => {
 		// if (isopen) return;
 
+		if (isopen) return;
+
 		if (isAnimating.current) return;
 		isAnimating.current = true;
 
@@ -323,6 +341,16 @@ const WelcomePage: React.FC = () => {
 
 		setIsopen(!isopen); // 클릭 시 상태 변경
 	};
+
+	useEffect(() => {
+		// setTimeout(() => {
+		// }, 5000);
+
+		setTimeout(() => {
+			// console.log("1초 지연.");
+			handleClick();
+		}, 1000);
+	}, []);
 
 	useEffect(() => {
 		isAnimating.current = false;
